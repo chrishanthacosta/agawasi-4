@@ -16,7 +16,7 @@ const gallery = [{ id: 1, imgUrl: "/aw-1.jpg" }, { id: 2, imgUrl: "/aw-2.jpg" }]
 
 const Carousel = () => {
     return (
-        <div className="container mx-auto h-unit-9xl">
+        <div className="container mx-auto h-unit-9xl sm:w-full sm:h-full">
       <Swiper
           // install Swiper modules
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -28,7 +28,8 @@ const Carousel = () => {
           scrollbar={{ draggable: true }}
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log('slide change')}
-          className="container mx-auto h-full"
+          className="container mx-auto sm:w-full sm:h-full"
+        //   className="container mx-auto h-full"
         //   className="h-max flex justify-center items-center"
           autoplay={{ delay: 2000 }}
           speed={2000}
@@ -47,7 +48,7 @@ const Carousel = () => {
                       alt={`Product gallery ${item.id}`}
                       width={1000}
                       height={665}
-                      className="block w-full h-full object-fit"
+                      className="block sm:w-full sm:h-full object-fit"
                   />
               </SwiperSlide>
           ))}

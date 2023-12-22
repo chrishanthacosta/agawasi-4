@@ -64,6 +64,6 @@ export const siteConfig = {
 		facebook: "https://github.com/nextui-org/nextui",
 		twitter: "https://twitter.com/getnextui",
 		 
-    sponsor: "https://patreon.com/jrgarciadev"
+    sponsor: "https://www.www.con"
 	},
 };
