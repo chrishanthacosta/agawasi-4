@@ -6,6 +6,9 @@ import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
 import { Link } from "@nextui-org/link";
 import clsx from "clsx";
+import { getServerSession } from "next-auth"
+import SessionProvider from './../components/session-provider';
+ 
 
 export const metadata: Metadata = {
 	title: {
@@ -24,11 +27,12 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: {
 	children: React.ReactNode;
-}) {
+	}) {
+	const session = await getServerSession();
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<head />
@@ -38,6 +42,7 @@ export default function RootLayout({
 					fontSans.variable
 				)}
 			>
+				<SessionProvider session={session}>
 				<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
 					<div className="relative flex flex-col h-screen">
 						<Navbar />
@@ -48,7 +53,8 @@ export default function RootLayout({
 
 						</footer>
 					</div>
-				</Providers>
+					</Providers>
+				</SessionProvider>
 			</body>
 		</html>
 	);

@@ -1,3 +1,4 @@
+"use client"
 import {
 	Navbar as NextUINavbar,
 	NavbarContent,
@@ -27,11 +28,30 @@ import {
 	SearchIcon,
 	LoginIcon,
 	FacebookIcon,
+	LogoutIcon,
 } from "@/components/icons";
 
 import { Logo } from "@/components/icons";
 
+import { signIn, useSession, signOut } from "next-auth/react"
+import { useEffect } from "react";
+
+
 export const Navbar = () => {
+
+	const { data: session } = useSession();
+
+	useEffect(() => {
+		const u = { userName: "costa" || "", loggedIn: true }
+		//dispatch(setUSer(u))
+
+	}, [session])
+
+	console.log("session", session?.user?.name )
+	// const user = useSelector((state: RootState) => state.user)
+	// const dispatch = useDispatch();
+
+
 	const searchInput = (
 		<Input
 			aria-label="Search"
@@ -53,6 +73,8 @@ export const Navbar = () => {
 		/>
 	);
 
+
+
 	return (
 		<NextUINavbar maxWidth="xl" position="sticky">
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -64,20 +86,45 @@ export const Navbar = () => {
 					</NextLink>
 				</NavbarBrand>
 				<ul className="hidden lg:flex gap-4 justify-start ml-2">
-					{siteConfig.navItems.map((item) => (
-						<NavbarItem key={item.href}>
-							<NextLink
-								className={clsx(
-									linkStyles({ color: "foreground" }),
-									"data-[active=true]:text-primary data-[active=true]:font-medium"
-								)}
-								color="foreground"
-								href={item.href}
-							>
-								{item.label}
-							</NextLink>
-						</NavbarItem>
-					))}
+					{siteConfig.navItems.map((item) => {
+						
+						
+						
+						if (item.label == "My Profile") {
+							
+							if ( session?.user?.name != "guesta")
+							return (
+								<NavbarItem key={item.href}>
+									<NextLink
+										className={clsx(
+											linkStyles({ color: "foreground" }),
+											"data-[active=true]:text-primary data-[active=true]:font-medium"
+										)}
+										color="foreground"
+										href={item.href}
+									>
+										{item.label}
+									</NextLink>
+								</NavbarItem>
+							)
+						 }
+						else  {
+							return (
+								<NavbarItem key={item.href}>
+									<NextLink
+										className={clsx(
+											linkStyles({ color: "foreground" }),
+											"data-[active=true]:text-primary data-[active=true]:font-medium"
+										)}
+										color="foreground"
+										href={item.href}
+									>
+										{item.label}
+									</NextLink>
+								</NavbarItem>
+							)
+						}
+						})}
 				</ul>
 			</NavbarContent>
 
@@ -96,16 +143,26 @@ export const Navbar = () => {
 				</NavbarItem>
 				<NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
 				<NavbarItem className="hidden md:flex">
-					<Button
-            isExternal
+					{ session && <Button
+						isExternal
 						as={Link}
 						className="text-sm font-normal text-default-600 bg-default-100"
-						href={siteConfig.links.sponsor}
+						href={"/api/auth/signout"}
+						startContent={<LogoutIcon className="text-danger" />}
+						variant="flat"
+					>
+						{"Log Out " + session?.user?.name}
+					</Button>}
+					{!session && <Button
+						isExternal
+						as={Link}
+						className="text-sm font-normal text-default-600 bg-default-100"
+						href={"/api/auth/signin"}
 						startContent={<LoginIcon className="text-danger" />}
 						variant="flat"
 					>
 						Login
-					</Button>
+					</Button>}
 				</NavbarItem>
 			</NavbarContent>
 
