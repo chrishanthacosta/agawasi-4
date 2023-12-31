@@ -78,11 +78,12 @@ export const Navbar = () => {
 	return (
 		<NextUINavbar maxWidth="xl" position="sticky">
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-				<NavbarBrand as="li" className="gap-3 max-w-fit">
-					<NextLink className="flex justify-start items-center gap-1" href="/">
-						<Logo className="mt-[2]"/>
-						<p className="font-bold text-inherit inline marker:">Aga</p>
-						<p className="font-bold text-inherit inline text-indigo-600">Wasi</p>
+				<NavbarBrand as="li" className="gap-3 max-w-fit mr-8">
+					<NextLink className="flex justify-start items-center gap-1 " href="/">
+						<Logo className=""/>
+						<p className="font-bold text-purple-700 text-2xl mr-8">Aga Wasi Enterprises</p>
+						{/* <p className="font-bold text-inherit inline text-indigo-600">Wasi</p>
+						<p className="font-bold text-inherit inline text-red-600 mr-8">Enterprises</p> */}
 					</NextLink>
 				</NavbarBrand>
 				<ul className="hidden lg:flex gap-4 justify-start ml-2">

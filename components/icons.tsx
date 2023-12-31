@@ -8,11 +8,11 @@ export const Logo: React.FC<IconSvgProps> = ({
 	height,
 	...props
 }) => (
-	<Image src="/logo.jpg"
+	<Image src="/logo.png"
 	alt="logo"
 	width="100"
 		height="100"
-		className="mt-12"
+		className="lg:w-16 w-8"
 	/>
 	// <svg
 	// 	fill="none"
