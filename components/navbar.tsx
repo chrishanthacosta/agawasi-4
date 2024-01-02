@@ -27,9 +27,10 @@ import {
 	HeartFilledIcon,
 	SearchIcon,
 	LoginIcon,
-	FacebookIcon,
 	LogoutIcon,
 } from "@/components/icons";
+
+
 
 import { Logo } from "@/components/icons";
 
@@ -46,11 +47,6 @@ export const Navbar = () => {
 		//dispatch(setUSer(u))
 
 	}, [session])
-
-	console.log("session", session?.user?.name )
-	// const user = useSelector((state: RootState) => state.user)
-	// const dispatch = useDispatch();
-
 
 	const searchInput = (
 		<Input
@@ -73,43 +69,40 @@ export const Navbar = () => {
 		/>
 	);
 
-
-
 	return (
 		<NextUINavbar maxWidth="xl" position="sticky">
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-				<NavbarBrand as="li" className="gap-3 max-w-fit mr-8">
-					<NextLink className="flex justify-start items-center gap-1 " href="/">
-						<Logo className=""/>
-						<p className="font-bold text-purple-700 text-2xl mr-8">Aga Wasi Enterprises</p>
-						{/* <p className="font-bold text-inherit inline text-indigo-600">Wasi</p>
-						<p className="font-bold text-inherit inline text-red-600 mr-8">Enterprises</p> */}
+				<NavbarBrand as="li" className="gap-3 max-w-fit">
+					<NextLink className="flex justify-start items-center gap-1 w-[32] sm:w-[350px]" href="/">
+						<Logo />
+						<p className="font-bold text-inherit text-purple-800 font-bold text-3xl">Aga Wasi Enterprises</p>
 					</NextLink>
 				</NavbarBrand>
 				<ul className="hidden lg:flex gap-4 justify-start ml-2">
+
 					{siteConfig.navItems.map((item) => {
-						
-						
-						
+
+
+
 						if (item.label == "My Profile") {
-							
-							if ( session?.user?.name != "guesta")
-							return (
-								<NavbarItem key={item.href}>
-									<NextLink
-										className={clsx(
-											linkStyles({ color: "foreground" }),
-											"data-[active=true]:text-primary data-[active=true]:font-medium"
-										)}
-										color="foreground"
-										href={item.href}
-									>
-										{item.label}
-									</NextLink>
-								</NavbarItem>
-							)
-						 }
-						else  {
+
+							if (session)
+								return (
+									<NavbarItem key={item.href}>
+										<NextLink
+											className={clsx(
+												linkStyles({ color: "foreground" }),
+												"data-[active=true]:text-primary data-[active=true]:font-medium"
+											)}
+											color="foreground"
+											href={item.href}
+										>
+											{item.label}
+										</NextLink>
+									</NavbarItem>
+								)
+						}
+						else {
 							return (
 								<NavbarItem key={item.href}>
 									<NextLink
@@ -125,7 +118,21 @@ export const Navbar = () => {
 								</NavbarItem>
 							)
 						}
-						})}
+					})}
+					{/* {siteConfig.navItems.map((item) => (
+						<NavbarItem key={item.href}>
+							<NextLink
+								className={clsx(
+									linkStyles({ color: "foreground" }),
+									"data-[active=true]:text-primary data-[active=true]:font-medium"
+								)}
+								color="foreground"
+								href={item.href}
+							>
+								{item.label}
+							</NextLink>
+						</NavbarItem>
+					))} */}
 				</ul>
 			</NavbarContent>
 
@@ -137,14 +144,17 @@ export const Navbar = () => {
 					<Link isExternal href={siteConfig.links.twitter} aria-label="Twitter">
 						<TwitterIcon className="text-default-500" />
 					</Link>
-					<Link isExternal href={siteConfig.links.facebook} aria-label="Discord">
-						<FacebookIcon className="text-default-500" />
+					{/* <Link isExternal href={siteConfig.links.discord} aria-label="Discord">
+						<DiscordIcon className="text-default-500" />
 					</Link>
+					<Link isExternal href={siteConfig.links.github} aria-label="Github">
+						<GithubIcon className="text-default-500" />
+					</Link> */}
 					<ThemeSwitch />
 				</NavbarItem>
 				<NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
 				<NavbarItem className="hidden md:flex">
-					{ session && <Button
+					{session && <Button
 						isExternal
 						as={Link}
 						className="text-sm font-normal text-default-600 bg-default-100"
@@ -165,12 +175,24 @@ export const Navbar = () => {
 						Login
 					</Button>}
 				</NavbarItem>
+				{/* <NavbarItem className="hidden md:flex">
+					<Button
+						isExternal
+						as={Link}
+						className="text-sm font-normal text-default-600 bg-default-100"
+						href={siteConfig.links.sponsor}
+						startContent={<HeartFilledIcon className="text-danger" />}
+						variant="flat"
+					>
+						Sponsor
+					</Button>
+				</NavbarItem> */}
 			</NavbarContent>
 
 			<NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-				<Link isExternal href={siteConfig.links.facebook} aria-label="Github">
-					<FacebookIcon className="text-default-500" />
-				</Link>
+				{/* <Link isExternal href={siteConfig.links.github} aria-label="Github">
+					<GithubIcon className="text-default-500" />
+				</Link> */}
 				<ThemeSwitch />
 				<NavbarMenuToggle />
 			</NavbarContent>
@@ -178,15 +200,15 @@ export const Navbar = () => {
 			<NavbarMenu>
 				{searchInput}
 				<div className="mx-4 mt-2 flex flex-col gap-2">
-					{siteConfig.navItems.map((item, index) => (
+					{siteConfig.navMenuItems.map((item, index) => (
 						<NavbarMenuItem key={`${item}-${index}`}>
 							<Link
 								color={
 									index === 2
 										? "primary"
 										: index === siteConfig.navMenuItems.length - 1
-										? "danger"
-										: "foreground"
+											? "danger"
+											: "foreground"
 								}
 								href="#"
 								size="lg"
