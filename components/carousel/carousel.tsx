@@ -11,7 +11,7 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import Image from "next/image";
 
-const gallery = [{ id: 1, imgUrl: "/aw-1.jpg" }, { id: 2, imgUrl: "/aw-2.jpg" }]
+const gallery = [{ id: 1, imgUrl: "/aw-1.jpg" }, { id: 2, imgUrl: "/aw-2.jpg" }, , { id: 3, imgUrl: "/aw-3.jpg" }]
 
 
 const Carousel = () => {
