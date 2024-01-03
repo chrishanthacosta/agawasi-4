@@ -41,12 +41,12 @@ const Carousel = () => {
 
           {gallery?.map((item) => (
               <SwiperSlide
-                  key={`product-gallery-${item.id}`}
+                  key={`product-gallery-${item?.id}`}
                   className="container mx-auto rounded-md"
               >
                   <Image
-                      src={item.imgUrl}
-                      alt={`Product gallery ${item.id}`}
+                      src={item?.imgUrl ?? ""}
+                      alt={`Product gallery ${item?.id}`}
                       width={720}
                       height={494}
                       className="block sm:w-full sm:h-full object-fit rounded-md"
