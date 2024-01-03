@@ -16,13 +16,13 @@ export default function Card1({ header, iconpath, body }: { header: string, icon
                     width={40}
                 />
                 <div className="flex flex-col">
-                    <p className="text-2xl text-purple-800 font-bold">{header}</p>
-                    <p className="text-small text-default-500">Aga Wasi Enterprises</p>
+                    <p className="text-2xl text-purple-800 dark:text-white  font-bold">{header}</p>
+                    <p className="text-small text-default-500 dark:text-white">Aga Wasi Enterprises</p>
                 </div>
             </CardHeader>
             <Divider />
             <CardBody>
-                <p className="text-xl text-purple-800 ">{body}</p>
+                <p className="text-xl text-purple-800 dark:text-white">{body}</p>
             </CardBody>
             <Divider />
             <CardFooter>
