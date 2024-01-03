@@ -7,8 +7,7 @@ import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 import Carousel from "@/components/carousel/carousel";
 import Hero from "@/components/landing-page-compos/hero";
-import C2 from './../components/landing-page-compos/c2';
-import C1 from './../components/landing-page-compos/c1';
+ 
 import bg from "../public/bg.png"
 import  Image  from 'next/image';
 import Card1 from "@/components/landing-page-compos/card1";
@@ -35,7 +34,7 @@ export default function Home() {
 				{/* </div> */}
 			</section>
 
-			<section className="flex  items-center  justify-around  flex-wrap lg:flex-nowrap mt-8   rounded-md"> 
+			<section className="flex  items-center  justify-around  flex-wrap gap-2 sm:gap-0 lg:flex-nowrap mt-8   rounded-md"> 
 				<Card1 header="විශ්වාසනීය සේවය" iconpath="hshake.svg" body="දිගු කාලීන ව්‍යාපාරික අත්දැකීම් මත ගොඩනැගුනු විස්වාසය අපගේ ප්‍රධානම වත්කමයි"></Card1>
 				<Card1 header="ස්ථීර ආදායමක්" iconpath="income.svg" body="නිති පතා ඔබ වෙත ලැබෙන ආදායම නිසා අවදානම අවම වීම"></Card1>
 				<Card1 header="නිරවුල් කර්මාන්තයක්" iconpath="clear.svg" body="පරිසර හිතකාමී කර්මාන්තයක මුදල් ආයෝජනය මගින් ඔබ ලබන තෘප්තිය "></Card1>

@@ -3,6 +3,13 @@
 import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image } from "@nextui-org/react";
  
 
+import { Noto_Sans_Sinhala } from 'next/font/google'
+
+const noto = Noto_Sans_Sinhala({
+    weight: ['400',],
+    subsets: ["sinhala"],
+    display: 'swap',
+})
 
 export default function Card1({ header, iconpath, body }: { header: string, iconpath: string, body:string }) {
     return (
@@ -22,7 +29,7 @@ export default function Card1({ header, iconpath, body }: { header: string, icon
             </CardHeader>
             <Divider />
             <CardBody>
-                <p className="text-xl text-purple-800 dark:text-white">{body}</p>
+                <p className={`${noto.className} text-xl text-purple-800 dark:text-white`}>{body}</p>
             </CardBody>
             <Divider />
             <CardFooter>
