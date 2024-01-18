@@ -68,10 +68,10 @@ export const Navbar = () => {
 			type="search"
 		/>
 	);
-
+ 
 	return (
 		<NextUINavbar maxWidth="xl" position="sticky">
-			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+			<NavbarContent className="basis-1/5 lg:basis-full" justify="start">
 				<NavbarBrand as="li" className="gap-3 max-w-fit">
 					<NextLink className="flex justify-start items-center gap-1 w-[32] sm:w-[350px]" href="/">
 						<Logo />
@@ -137,10 +137,10 @@ export const Navbar = () => {
 			</NavbarContent>
 
 			<NavbarContent
-				className="hidden sm:flex basis-1/5 sm:basis-full"
+				className="hidden lg:flex basis-1/5 sm:basis-full"
 				justify="end"
 			>
-				<NavbarItem className="hidden sm:flex gap-2">
+				<NavbarItem className="hidden lg:flex gap-2">
 					<Link isExternal href={siteConfig.links.twitter} aria-label="Twitter">
 						<TwitterIcon className="text-default-500" />
 					</Link>
@@ -153,7 +153,7 @@ export const Navbar = () => {
 					<ThemeSwitch />
 				</NavbarItem>
 				<NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-				<NavbarItem className="hidden md:flex">
+				<NavbarItem className="hidden lg:flex">
 					{session && <Button
 						isExternal
 						as={Link}
@@ -189,7 +189,7 @@ export const Navbar = () => {
 				</NavbarItem> */}
 			</NavbarContent>
 
-			<NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
+			<NavbarContent className="lg:hidden basis-1 pl-4" justify="end">
 				{/* <Link isExternal href={siteConfig.links.github} aria-label="Github">
 					<GithubIcon className="text-default-500" />
 				</Link> */}
